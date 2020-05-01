@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class UsersController < ApplicationController
   def new
     @user = User.new
@@ -5,9 +7,9 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    #@user.email = params[:email]
-    #@user.username = params[:username]
-    #@user.password = params[:password]
+    # @user.email = params[:email]
+    # @user.username = params[:username]
+    # @user.password = params[:password]
 
     if @user.save
       redirect_to new_user_path
@@ -23,9 +25,12 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
+    updated_user = user_params
 
-    if @user.update(user_params)
-      redirect_to edit_user_path(@user)        
+    updated_user[:password] = @user[:password] if updated_user[:password].empty?
+
+    if @user.update(updated_user)
+      redirect_to edit_user_path(@user)
     else
       p @user.errors.full_messages
       render :edit
