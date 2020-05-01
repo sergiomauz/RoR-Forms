@@ -1,0 +1,14 @@
+<form action="/users" method="post" accept-charset="UTF-8">
+  <label for="email">Email</label>
+  <input type="text" name="user[email]">
+  <br />
+  <label for="username">Username</label>
+  <input type="text" name="user[username]">
+  <br />
+  <label for="password">Password</label>
+  <input type="text" name="user[password]">
+  <br />
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <!-- other inputs here -->
+  <input type="submit" value="Submit">
+</form>
