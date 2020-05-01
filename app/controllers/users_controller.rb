@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class UsersController < ApplicationController
   def new
     @user = User.new
@@ -7,9 +5,6 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    # @user.email = params[:email]
-    # @user.username = params[:username]
-    # @user.password = params[:password]
 
     if @user.save
       redirect_to new_user_path
